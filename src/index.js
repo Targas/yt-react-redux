@@ -1,21 +1,15 @@
-const person = {
-    name: 'John',
-    address: {
-        country: 'USA',
-        city: 'San Francisco'
-    }
-}
+const numbers = [1,2,3]
 
-// const updated = Object.assign({}, person, { name: 'Bob', age: 30 })
-const updated = {
-    ...person,
-    name: 'bob',
-    address: {
-        ...person.address,
-        city: "Tokyo"
-    }
-}
-updated.address.city = 'New York'
+const index = numbers.indexOf(2)
+const added = [
+    ...numbers.slice(0, index),
+    4,
+    ...numbers.slice(index)
+]
+console.log(added)
 
-console.log('person', person)
-console.log('updated', updated)
+const removed = numbers.filter(n => n !== 2)
+console.log(removed)
+
+const updated = numbers.map(n => n === 2 ? 20 : n)
+console.log(updated)
