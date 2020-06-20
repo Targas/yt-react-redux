@@ -1,13 +1,14 @@
-import { map } from 'immutable'
+import { produce } from 'immer'
 
-let book = new Map({
-    title: 'Fight Club'
-})
+let book = { title: 'Fight Club' }
 
 function publish(book) {
-    book.set('isPublished', true)
+    produce(book, draftBook => {
+        draftBook.isPublished = true 
+    })
 }
 
-book = publish(book)
+let updated = publish(book)
 
-console.log(book.toJs())
+console.log(book)
+console.log(updated)
